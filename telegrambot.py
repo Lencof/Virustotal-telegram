@@ -1,6 +1,7 @@
 import math
 import os
 import time
+import datetime
 
 from pyrogram import Client, filters
 from pyrogram.types import ForceReply, InputMediaPhoto
@@ -78,12 +79,12 @@ def download_telegram_media(client, message):
 	if not message.from_user.id == me :
 		client.send_message(
 			chat_id=message.chat.id,
-			text = 'Please host your own bot at \nhttps://github.com/uaudith/Virustotal-telegram'
+			text = 'Please host your own bot at \nhttps://github.com/uaudith/Virustotal-telegram' # your text
 		)
 		return
 	msg = client.send_message(
 	  chat_id=message.chat.id,
-	  text='Download is being started...\nPlease Wait !'
+	  text='Download is being started...\nPlease Wait !' # your text
 	)
 	start_time = time.time()
 	download_location = client.download_media(
@@ -114,7 +115,7 @@ def check_size(path,userid):
 	print('file size is',b)
 	obj=virus(str(path))
 	if b>32*1024*1024:
-		send_msg(userid,'Sorry This file is larger than 32Mb')
+		send_msg(userid,'Sorry This file is larger than 32Mb') # your text
 		# obj.large_files()
 		return
 	else:
@@ -132,8 +133,8 @@ def check_size(path,userid):
 	if len(viruslist) > 0:
 		names=' , '.join(viruslist)
 		reason='\n'.join(reasons)
-		send_msg(userid,'\n☣ --Threats have been detected !-- ☣\n\n**{}** \n\n\n**Description**\n\n`{}`\n\n[Detailed Report]({})'.format(names,reason,obj.link))
+		send_msg(userid,'\n☣ --Threats have been detected !-- ☣\n\n**{}** \n\n\n**Description**\n\n`{}`\n\n[Detailed Report]({})'.format(names,reason,obj.link)) # your text
 	else:
-		send_msg(userid,'✔️ File is clean ')
+		send_msg(userid,'✔️ File is clean ') # your text
 
-app.run()
+app.run() # Close 
